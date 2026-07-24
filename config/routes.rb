@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  get "products/new"
 root to: "homes#top"
+post 'products', to: 'products#create'  # 登録
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,4 +15,9 @@ root to: "homes#top"
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get 'products', to: 'products#index'
+  get 'products/:id', to: 'products#show', as: 'product'
+  get 'products/:id/edit', to: 'products#edit', as: 'edit_product'
+  patch 'products/:id', to: 'products#update'
+  delete 'products/:id', to: 'products#destroy', as: 'destroy_product'
 end
